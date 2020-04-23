@@ -1,0 +1,14 @@
+.crypto{
+    height: 150px;
+    margin: 10px;
+}
+
+.crypto_div{
+    text-align: center;
+}
+
+.container{
+    border-style: solid;
+    border-color: #8b0101;
+    border-width: 5px;
+}
