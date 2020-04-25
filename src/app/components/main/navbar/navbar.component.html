@@ -1,0 +1,44 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark red darken-4">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand><a class="navbar-brand" href="#">
+    <img src="assets/logo/logo-white-1000-300-left.png" height="80" alt="Depression 2020s logo">
+  </a></mdb-navbar-brand>
+
+  <!-- Collapsible content -->
+  <links>
+
+    <!-- Links -->
+    <ng-template #anonymousUser>
+      <ul class="navbar-nav ml-auto text-light">
+          <li class="nav-item">
+            <a class="nav-link waves-light" routerLink="/home" mdbWavesEffect>Home</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light" routerLink="/blog" mdbWavesEffect>Blog</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light" routerLink="/about" mdbWavesEffect>About</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link waves-light" routerLink="/donate" mdbWavesEffect>Donate</a>
+          </li>
+      </ul>
+    </ng-template>
+
+    <ul class="navbar-nav ml-auto text-light" *ngIf="auth.isLoggedIn ; else anonymousUser">
+      <li class="nav-item">
+        <a class="nav-link waves-light" routerLink="/dashboard" mdbWavesEffect>Dashboard</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link waves-light" (click)= "logout()" mdbWavesEffect>Logout</a>
+      </li>
+    </ul>
+      
+    <!-- Links -->
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->

@@ -1,6 +1,6 @@
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/main/footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './components/main/navbar/navbar.component';
 import { Component } from '@angular/core';
 
 @Component({
