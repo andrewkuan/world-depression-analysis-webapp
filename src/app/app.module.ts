@@ -24,7 +24,6 @@ import { DonateinfoComponent } from './components/public/donateinfo/donateinfo.c
 import { AdminloginComponent } from './components/public/adminlogin/adminlogin.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 
-import { MaterialModule } from './material.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
