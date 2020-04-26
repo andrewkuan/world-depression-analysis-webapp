@@ -29,10 +29,14 @@ const routes: Routes = [
   
   { path: 'adminlogin', component : AdminloginComponent, canActivate: [InnerPageGuardService]},
 
-  { path: 'dashboard', component : DashboardComponent, canActivate: [AuthGuardService]},
-  { path: 'blogcrud', component : BlogcrudComponent, canActivate: [AuthGuardService]},
-  { path: 'carouselcrud', component : CarouselcrudComponent, canActivate: [AuthGuardService]},
-  { path: 'ebookcrud', component : EbookcrudComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/dashboard', component : DashboardComponent, canActivate: [AuthGuardService]},
+
+  { path: 'admin/blogcrud/new', component : BlogcrudComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/blogcrud/:id', component : BlogcrudComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/blogcrud', component : BlogcrudComponent, canActivate: [AuthGuardService]},
+
+  { path: 'admin/carouselcrud', component : CarouselcrudComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/ebookcrud', component : EbookcrudComponent, canActivate: [AuthGuardService]},
 ];
 
 @NgModule({

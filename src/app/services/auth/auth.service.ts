@@ -38,7 +38,7 @@ export class AuthService {
       .then((result) => {
         this.SetUserData(result.user);
         setTimeout(() => {
-            this.router.navigate(['dashboard']);
+            this.router.navigate(['admin/dashboard']);
         },100);
       }).catch((error) => {
         window.alert(error.message)

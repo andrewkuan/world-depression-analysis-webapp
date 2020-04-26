@@ -1,3 +1,6 @@
+import { EbookserviceService } from './services/ebook/ebookservice.service';
+import { CarouselserviceService } from './services/carousel/carouselservice.service';
+import { BlogserviceService } from './services/blog/blogservice.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -21,12 +24,18 @@ import { DonateinfoComponent } from './components/public/donateinfo/donateinfo.c
 import { AdminloginComponent } from './components/public/adminlogin/adminlogin.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 
+import { MaterialModule } from './material.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
 import { AuthService } from './services/auth/auth.service';
 import { UnauthComponent } from './components/public/unauth/unauth.component';
 import { NewblogComponent } from './components/admin/newblog/newblog.component';
 import { BlogcrudComponent } from './components/admin/blogcrud/blogcrud.component';
 import { CarouselcrudComponent } from './components/admin/carouselcrud/carouselcrud.component';
 import { EbookcrudComponent } from './components/admin/ebookcrud/ebookcrud.component';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +62,10 @@ import { EbookcrudComponent } from './components/admin/ebookcrud/ebookcrud.compo
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
 
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
@@ -61,6 +74,9 @@ import { EbookcrudComponent } from './components/admin/ebookcrud/ebookcrud.compo
   ],
   providers: [
     AuthService,
+    BlogserviceService,
+    CarouselserviceService,
+    EbookserviceService
   ],
   bootstrap: [AppComponent],
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]

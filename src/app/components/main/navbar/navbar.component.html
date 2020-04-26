@@ -29,16 +29,16 @@
 
     <ul class="navbar-nav ml-auto text-light" *ngIf="auth.isLoggedIn ; else anonymousUser">
       <li class="nav-item">
-        <a class="nav-link waves-light" routerLink="/dashboard" mdbWavesEffect>Dashboard</a>
+        <a class="nav-link waves-light" routerLink="/admin/dashboard" mdbWavesEffect>Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" routerLink="/blogcrud" mdbWavesEffect>Blog</a>
+        <a class="nav-link waves-light" routerLink="/admin/blogcrud" mdbWavesEffect>Blog</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" routerLink="/carouselcrud" mdbWavesEffect>Carousel</a>
+        <a class="nav-link waves-light" routerLink="/admin/carouselcrud" mdbWavesEffect>Carousel</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" routerLink="/ebookcrud" mdbWavesEffect>E-Book</a>
+        <a class="nav-link waves-light" routerLink="/admin/ebookcrud" mdbWavesEffect>E-Book</a>
       </li>
       <li class="nav-item">
           <a class="nav-link waves-light" (click)= "logout()" mdbWavesEffect>Logout</a>
