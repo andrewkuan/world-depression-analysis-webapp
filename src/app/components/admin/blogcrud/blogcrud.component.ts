@@ -8,6 +8,7 @@ import { BlogserviceService } from './../../../services/blog/blogservice.service
 import { Blog } from './../../../models/blog';
 
 import { Subscription } from 'rxjs/internal/Subscription';
+import {Observable} from 'rxjs/internal/Observable';
 
 
 @Component({
@@ -20,8 +21,8 @@ export class BlogcrudComponent implements OnInit {
 
   constructor(private blogService : BlogserviceService, private router: Router) {}
 
+  blogs: Observable<Blog[]>;
   subscription: Subscription;
-  blogDataSource : MatTableDataSource<Blog>;
   showSpinner: boolean = true;
   itemExist = true;
 
@@ -29,15 +30,7 @@ export class BlogcrudComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   ngOnInit(): void {
-
-    this.blogService.getAllBlog().subscribe(items => {
-      this.blogDataSource = new MatTableDataSource(items);
-
-      this.blogDataSource.paginator = this.paginator;
-      this.blogDataSource.sort = this.sort;
-      this.showSpinner = false;
-    });
-
+    this.blogs = this.blogService.getAllBlog()
   }
 
   edit(blog:Blog){
@@ -50,8 +43,6 @@ export class BlogcrudComponent implements OnInit {
   }
 
   filter(query:string){
-  //filter from jobService
-    this.itemExist = this.blogService.filterCheck(query,this.blogDataSource);
   }
 
 }

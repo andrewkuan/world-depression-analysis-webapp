@@ -7,19 +7,20 @@
     </div>
 </div>
 
-<div class="mat-elevation-z8">
-    <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>test</mat-card-title>
-          <mat-card-subtitle>test</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-          <p>test</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions>
-      </mat-card>
+<div class="container">
+  <div class="row">
+      <div class="col-md-4" *ngFor=" let blog of blogs | async">
+        <div routerLink="{{blog.id}}">
+          <img src="{{blog.imageURL}}" *ngIf="blog.imageURL" width="200px">
+          <h2>{{blog.title}}</h2>
+          <p>{{blog.author}}</p>
+        </div>
+        <a>
+          <mdb-icon (click)="edit(blog)" fas icon="edit" size="2x" class="indigo-text mr-3"></mdb-icon>
+        </a>
+        <a>
+          <mdb-icon (click)="delete(blog)" fas icon="trash-alt" size="2x" class="red-text"></mdb-icon>
+        </a>
+      </div>
+  </div>
 </div>

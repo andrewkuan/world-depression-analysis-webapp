@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4">.col-md-4</div>
-        <div class="col-md-4">.col-md-4</div>
+        <div class="col-md-4" *ngFor=" let blog of blogs | async" routerLink="{{blog.id}}">
+          <img src="{{blog.imageURL}}" *ngIf="blog.imageURL" width="200px">
+          <h2>{{blog.title}}</h2>
+          <p>{{blog.author}}</p>
+        </div>
     </div>
-</div>
+  </div>

@@ -1,3 +1,4 @@
+import { BlogDetailsComponent } from './components/public/blog-details/blog-details.component';
 import { InnerPageGuardService } from './services/auth/inner-page-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -15,14 +16,17 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { EbookcrudComponent } from './components/admin/ebookcrud/ebookcrud.component';
 import { CarouselcrudComponent } from './components/admin/carouselcrud/carouselcrud.component';
 import { BlogcrudComponent } from './components/admin/blogcrud/blogcrud.component';
+import { NewblogComponent } from './components/admin/newblog/newblog.component';
 
 import { AuthGuardService } from './services/auth/auth-guard.service';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/unauth', pathMatch: 'full'},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+
   { path: 'home', component : HomeinfoComponent},
   { path: 'blog', component : BlogComponent},
+  { path: 'blog/:id', component : BlogDetailsComponent},
   { path: 'about', component : AboutinfoComponent},
   { path: 'donate', component : DonateinfoComponent},
   { path: 'unauth', component : UnauthComponent},
@@ -31,8 +35,8 @@ const routes: Routes = [
 
   { path: 'admin/dashboard', component : DashboardComponent, canActivate: [AuthGuardService]},
 
-  { path: 'admin/blogcrud/new', component : BlogcrudComponent, canActivate: [AuthGuardService]},
-  { path: 'admin/blogcrud/:id', component : BlogcrudComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/blogcrud/new', component : NewblogComponent, canActivate: [AuthGuardService]},
+  { path: 'admin/blogcrud/:id', component : NewblogComponent, canActivate: [AuthGuardService]},
   { path: 'admin/blogcrud', component : BlogcrudComponent, canActivate: [AuthGuardService]},
 
   { path: 'admin/carouselcrud', component : CarouselcrudComponent, canActivate: [AuthGuardService]},

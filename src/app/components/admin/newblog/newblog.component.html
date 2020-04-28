@@ -1,1 +1,94 @@
-<p>newblog works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Default form contact -->
+            <form #newblog="ngForm" (ngSubmit)="save(newblog.value); onClear();" class="border border-light p-5">
+
+                <p class="h4 mb-4 text-center">New Blog</p>
+
+                <!-- Title -->
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input #title="ngModel" [(ngModel)]="blog.title" name="title" type="text" id="title" class="form-control" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="title.touched && title.invalid">
+                        Title is required!
+                    </div>
+                </div>
+
+                <!-- Author -->
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input #author="ngModel" [(ngModel)]="blog.author" name="author" type="text" id="author" class="form-control" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="author.touched && author.invalid">
+                        Author is required!
+                    </div>
+                </div>
+
+                <!-- Category -->
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input #category="ngModel" [(ngModel)]="blog.category" name="category" type="text" id="category" class="form-control" required>
+                    <div class="alert alert-danger" role="alert" *ngIf="category.touched && category.invalid">
+                        Category is required!
+                    </div>
+                </div>
+            
+                <!-- Content -->
+                <div class="form-group">
+                    <label for="blogContent">Content</label>
+                    <textarea #content="ngModel" [(ngModel)]="blog.content" name="content" class="form-control rounded-4" id="content" rows="10" required></textarea>
+                    <div class="alert alert-danger" role="alert" *ngIf="content.touched && content.invalid">  
+                        Content is required!
+                    </div>
+                </div>
+
+                 <!--Image Url-->
+                 <div class="form-group">
+                    <label for="imageURL">Image Upload</label>
+                    <input #imageURL="ngModel" [(ngModel)]="blog.imageURL" id="imageURL" class="form-control" name="imageURL" type="file" (change)="showPreview($event)" accept="image/*" required>
+                </div>
+
+                <button *ngIf="!this.blogUID" [disabled]="!newblog.valid" class="btn btn-info" (click)="create(newblog.value);">Submit</button>
+                <button *ngIf="!this.blogUID" class="btn btn-info" (click)="onClear();">Clear</button>
+                <button *ngIf="this.blogUID" [disabled]="!newblog.valid" class="btn btn-info" (click)="save(newblog.value);">Update</button>
+
+            </form>
+
+        </div>
+
+        <div class="col-md-6">
+            
+            <!-- Card -->
+            <mdb-card>
+                <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+                    <!-- Card img -->
+                    <mdb-card-img [src]="DefaultPreview()" alt="Blog Image"></mdb-card-img>
+                </div>
+                <!--Card content-->
+                <mdb-card-body>
+                    <!--Title-->
+                    <mdb-card-title>
+                        <h4  class="card-title font-weight-bold mb-2 lead">{{blog.title}}</h4>
+                    </mdb-card-title>
+                
+                    <!--Text-->
+                    <mdb-card-text>
+                        <dl class="row indigo-text">
+                            <dt class="col-sm-4">Author</dt>
+                            <dd class="col-sm-8">{{blog.author}}</dd>
+                                        
+                            <dt class="col-sm-4">Category</dt>
+                            <dd class="col-sm-8">{{blog.category}}</dd>
+
+                            <dt class="col-sm-4">Content</dt>
+                            <dd class="col-sm-8">{{blog.content}}</dd>
+                        </dl>
+                    </mdb-card-text>
+
+                </mdb-card-body>
+            </mdb-card>
+            <!-- Card -->
+        </div>
+    </div>
+</div>
+

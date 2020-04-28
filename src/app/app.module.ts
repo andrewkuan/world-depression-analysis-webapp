@@ -27,6 +27,8 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AuthService } from './services/auth/auth.service';
 import { UnauthComponent } from './components/public/unauth/unauth.component';
@@ -34,6 +36,9 @@ import { NewblogComponent } from './components/admin/newblog/newblog.component';
 import { BlogcrudComponent } from './components/admin/blogcrud/blogcrud.component';
 import { CarouselcrudComponent } from './components/admin/carouselcrud/carouselcrud.component';
 import { EbookcrudComponent } from './components/admin/ebookcrud/ebookcrud.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+import { BlogDetailsComponent } from './components/public/blog-details/blog-details.component';
 
 
 @NgModule({
@@ -52,7 +57,8 @@ import { EbookcrudComponent } from './components/admin/ebookcrud/ebookcrud.compo
     NewblogComponent,
     BlogcrudComponent,
     CarouselcrudComponent,
-    EbookcrudComponent
+    EbookcrudComponent,
+    BlogDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -60,16 +66,20 @@ import { EbookcrudComponent } from './components/admin/ebookcrud/ebookcrud.compo
     FormsModule,
     ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
+    CommonModule,
 
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatButtonModule,
+    MatToolbarModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthService,

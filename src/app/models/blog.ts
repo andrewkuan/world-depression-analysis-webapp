@@ -1,6 +1,9 @@
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
+
 export interface Blog {
     uid: string;
-    timeStamp: Date;
+    timeStamp: any;
+    title: string;
     category: string;
     author: string;
     content: string;
