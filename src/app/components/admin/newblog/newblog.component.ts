@@ -11,6 +11,8 @@ import { finalize } from "rxjs/operators";
 
 import { Blog } from './../../../models/blog';
 
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 
 @Component({
   selector: 'app-newblog',
@@ -19,6 +21,7 @@ import { Blog } from './../../../models/blog';
 })
 export class NewblogComponent implements OnInit {
 
+  public Editor = ClassicEditor;
   imgSrc : string =  null
   selectedImage : any = null
   blogUID : string;
@@ -120,12 +123,9 @@ export class NewblogComponent implements OnInit {
 
       if(this.blog.imageURL){
         this.imgSrc = this.blog.imageURL;
-        this.selectedImage = true;
-        this.blog.imageURL = this.blog.imageURL
       }
       else{
         this.imgSrc = '/assets/images/Default_Uploader_Pic.png';
-        this.selectedImage = false;
       }
     }
   }

@@ -35,8 +35,7 @@
             
                 <!-- Content -->
                 <div class="form-group">
-                    <label for="blogContent">Content</label>
-                    <textarea #content="ngModel" [(ngModel)]="blog.content" name="content" class="form-control rounded-4" id="content" rows="10" required></textarea>
+                    <ckeditor #content="ngModel" [(ngModel)]="blog.content" name="content" id="content" rows="10" [editor]="Editor" data="" required></ckeditor>
                     <div class="alert alert-danger" role="alert" *ngIf="content.touched && content.invalid">  
                         Content is required!
                     </div>
@@ -45,7 +44,7 @@
                  <!--Image Url-->
                  <div class="form-group">
                     <label for="imageURL">Image Upload</label>
-                    <input #imageURL="ngModel" [(ngModel)]="blog.imageURL" id="imageURL" class="form-control" name="imageURL" type="file" (change)="showPreview($event)" accept="image/*" required>
+                    <input #imageURL="ngModel" [(ngModel)]="blog.imageURL" id="imageURL" class="form-control" name="imageURL" type="file" (change)="showPreview($event)" accept="image/*">
                 </div>
 
                 <button *ngIf="!this.blogUID" [disabled]="!newblog.valid" class="btn btn-info" (click)="create(newblog.value);">Submit</button>

@@ -1,6 +1,7 @@
 import { EbookserviceService } from './services/ebook/ebookservice.service';
 import { CarouselserviceService } from './services/carousel/carouselservice.service';
 import { BlogserviceService } from './services/blog/blogservice.service';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -39,6 +40,8 @@ import { EbookcrudComponent } from './components/admin/ebookcrud/ebookcrud.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { BlogDetailsComponent } from './components/public/blog-details/blog-details.component';
+
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -80,6 +83,8 @@ import { BlogDetailsComponent } from './components/public/blog-details/blog-deta
     AngularFireAuthModule,
     AngularFireStorageModule,
     BrowserAnimationsModule,
+    
+    CKEditorModule,
   ],
   providers: [
     AuthService,

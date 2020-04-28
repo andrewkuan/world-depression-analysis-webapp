@@ -9,18 +9,19 @@
 
 <div class="container">
   <div class="row">
-      <div class="col-md-4" *ngFor=" let blog of blogs | async">
-        <div routerLink="{{blog.id}}">
-          <img src="{{blog.imageURL}}" *ngIf="blog.imageURL" width="200px">
+      <mat-card class="col-md-3 blog-box hoverable" *ngFor=" let blog of blogs | async">
+        <a><div class="blog-inner-box" routerLink="../../blog/{{blog.id}}">
+          <div>
+            <img class="div-image" src="{{blog.imageURL}}" *ngIf="blog.imageURL">
+          </div>
           <h2>{{blog.title}}</h2>
           <p>{{blog.author}}</p>
-        </div>
-        <a>
-          <mdb-icon (click)="edit(blog)" fas icon="edit" size="2x" class="indigo-text mr-3"></mdb-icon>
-        </a>
-        <a>
-          <mdb-icon (click)="delete(blog)" fas icon="trash-alt" size="2x" class="red-text"></mdb-icon>
-        </a>
-      </div>
+        </div></a>
+        <div class="blog-inner-box" bottom="0" position="fixed">
+          <a><mdb-icon (click)="edit(blog)" fas icon="edit" size="" class=""></mdb-icon></a> 
+          &nbsp;
+          <a><mdb-icon (click)="delete(blog)" fas icon="trash-alt" size="" class=""></mdb-icon></a>
+       </div>
+         </mat-card>
   </div>
 </div>

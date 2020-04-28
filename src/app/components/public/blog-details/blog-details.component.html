@@ -1,6 +1,5 @@
 <div *ngIf="blog">
-    <img src="{{blog.imageURL}}" *ngIf="blog.imageURL">
     <h2>{{blog.title}}</h2>
-    <p>{{blog.content}}</p>
+    <div [innerHtml]='blog.content'></div>
     <p>posted by {{blog.author}} &bull; {{blog.timeStamp.toDate() | date: 'fullDate'}}</p>
 </div>
