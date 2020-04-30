@@ -1,4 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { CarouselserviceService } from './../../../services/carousel/carouselservice.service';
+import { Carousel } from './../../../models/carousel';
+import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as firebase from 'firebase';
+
+import { take } from 'rxjs/internal/operators/take';
+import { finalize } from "rxjs/operators";
+import {Observable} from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-carouselcrud',
@@ -7,9 +18,139 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselcrudComponent implements OnInit {
 
-  constructor() { }
+  imgSrc : string =  null
+  selectedImage : any = null
+  carouselUID : string;
+  carousels :Observable<Carousel[]>;
+
+  carousel: Carousel = {
+    uid : null,
+    imageURL : null,
+    url : null,
+    isPublic : null,
+  }
+
+  constructor(  private afs : AngularFirestore,
+                @Inject(AngularFireStorage) private storage : AngularFireStorage,
+                private carouselservice : CarouselserviceService,
+                private router : Router, 
+                private route : ActivatedRoute,
+    ) { }
 
   ngOnInit(): void {
+    this.carouselUID = this.route.snapshot.paramMap.get('id');
+      if(this.carouselUID){
+        this.carouselservice.getBlog(this.carouselUID).pipe(take(1)).subscribe((carousel:Carousel) => this.carousel = carousel)
+      };
+
+    this.carousels = this.carouselservice.getAllBlog()
+    }
+
+  @ViewChild('newcarousel',  {static: false}) form: NgForm;
+
+  save(carousel: Carousel){
+
+  const fileRef = this.storage.ref('carousel_images/'+ this.carouselUID);
+
+  if(this.selectedImage!=null){
+    this.storage.upload('carousel_images/'+ this.carouselUID, this.selectedImage).snapshotChanges().pipe(
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe((url) => {
+          carousel.imageURL = url;
+          this.carouselservice.updateBlog(carousel, this.carouselUID);
+        })
+      })
+      ).subscribe();
+  }else{
+    this.carouselservice.updateBlog(carousel, this.carouselUID);
+  }
+
+  // this.clearField(); 
+  this.router.navigate(['/admin/carouselcrud']);
+  }
+
+  create(carousel: Carousel){
+    
+    var newdoc = this.afs.collection('carousel').ref.doc()
+    const fileRef = this.storage.ref('carousel_images/'+ newdoc.id);
+
+    if(this.selectedImage!=null){
+      this.storage.upload('carousel_images/'+ newdoc.id, this.selectedImage).snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) => {
+            carousel.imageURL = url;
+            this.carouselservice.createBlog({
+              uid : newdoc.id,
+              imageURL : carousel.imageURL,
+              url : carousel.url,
+              isPublic : false
+            },newdoc.id);
+          })
+        })
+        ).subscribe();
+    }else{
+      this.carouselservice.createBlog({
+        uid : newdoc.id,
+        imageURL : carousel.imageURL,
+        url : carousel.url,
+        isPublic : false
+      },newdoc.id);
+    }
+
+    // this.clearField(); 
+    this.router.navigate(['/admin/carouselcrud']);
+  }
+
+  delete(carousel:Carousel){
+    if(confirm("Are you sure that you want to delete this?"))
+      this.carouselservice.deleteBlog(carousel);
+  }
+
+  edit(carousel:Carousel){
+
+  }
+
+  //reset form function
+  onClear(){
+    this.form.reset();
+  }
+
+  cancel(){
+    this.router.navigate(['/admin/carouselcrud']);
+  }
+
+  showPreview(event: any){
+    if(event.target.files && event.target.files[0]){
+      const reader = new FileReader();
+      reader.onload = (e:any) => this.imgSrc = e.target.result;
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImage = event.target.files[0];
+    }
+    else{
+
+      if(this.carousel.imageURL){
+        this.imgSrc = this.carousel.imageURL;
+      }
+      else{
+        this.imgSrc = '/assets/defaults/Default_Uploader_Pic.png';
+      }
+    }
+  }
+
+  DefaultPreview(){
+    if(this.selectedImage){
+
+    }
+    else{
+      if(this.carousel.imageURL){
+        this.imgSrc = this.carousel.imageURL;
+      }
+      else{
+        this.imgSrc = '/assets/defaults/Default_Uploader_Pic.png';
+      }
+    }
+
+    return this.imgSrc;
   }
 
 }

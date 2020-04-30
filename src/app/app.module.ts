@@ -1,3 +1,4 @@
+import { SafePipe } from './../safepipe';
 import { EbookserviceService } from './services/ebook/ebookservice.service';
 import { CarouselserviceService } from './services/carousel/carouselservice.service';
 import { BlogserviceService } from './services/blog/blogservice.service';
@@ -61,7 +62,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     BlogcrudComponent,
     CarouselcrudComponent,
     EbookcrudComponent,
-    BlogDetailsComponent
+    BlogDetailsComponent,
+
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -83,7 +86,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     AngularFireAuthModule,
     AngularFireStorageModule,
     BrowserAnimationsModule,
-    
+
     CKEditorModule,
   ],
   providers: [

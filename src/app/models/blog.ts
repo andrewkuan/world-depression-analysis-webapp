@@ -8,4 +8,5 @@ export interface Blog {
     author: string;
     content: string;
     imageURL: string;
+    isPublic: boolean;
 }

@@ -1,3 +1,4 @@
+import { ImageService } from './../../../services/image/image.service';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore';
 import { BlogserviceService } from './../../../services/blog/blogservice.service';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
@@ -21,7 +22,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class NewblogComponent implements OnInit {
 
-  public Editor = ClassicEditor;
+  Editor = ClassicEditor;
   imgSrc : string =  null
   selectedImage : any = null
   blogUID : string;
@@ -33,7 +34,8 @@ export class NewblogComponent implements OnInit {
     category : null,
     author : null,
     content : null,
-    imageURL : null
+    imageURL : null,
+    isPublic : null,
   }
 
   constructor(
@@ -41,9 +43,9 @@ export class NewblogComponent implements OnInit {
     private router : Router, 
     private route : ActivatedRoute, 
     @Inject(AngularFireStorage) private storage: AngularFireStorage,
-    private afs: AngularFirestore
-    ) {
-      
+    private afs: AngularFirestore,
+    ){
+
     }
 
   ngOnInit(): void {
@@ -80,27 +82,36 @@ export class NewblogComponent implements OnInit {
     
     var newdoc = this.afs.collection('blog').ref.doc()
     const fileRef = this.storage.ref('blog_images/'+ newdoc.id);
-    const data = {
-      uid : newdoc.id,
-      timeStamp : firebase.firestore.Timestamp.now(),
-      title : blog.title,
-      category : blog.category,
-      author : blog.author,
-      content : blog.content,
-      imageURL : blog.imageURL
-    }
 
     if(this.selectedImage!=null){
       this.storage.upload('blog_images/'+ newdoc.id, this.selectedImage).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
             blog.imageURL = url;
-            this.blogservice.createBlog(data,newdoc.id);
+            this.blogservice.createBlog({
+              uid : newdoc.id,
+              timeStamp : firebase.firestore.Timestamp.now(),
+              title : blog.title,
+              category : blog.category,
+              author : blog.author,
+              content : blog.content,
+              imageURL : blog.imageURL,
+              isPublic : false
+            },newdoc.id);
           })
         })
         ).subscribe();
     }else{
-      this.blogservice.createBlog(data,newdoc.id);
+      this.blogservice.createBlog({
+        uid : newdoc.id,
+        timeStamp : firebase.firestore.Timestamp.now(),
+        title : blog.title,
+        category : blog.category,
+        author : blog.author,
+        content : blog.content,
+        imageURL : blog.imageURL,
+        isPublic : false
+      },newdoc.id);
     }
 
     // this.clearField(); 
@@ -110,6 +121,10 @@ export class NewblogComponent implements OnInit {
   //reset form function
   onClear(){
     this.form.reset();
+  }
+
+  cancel(){
+    this.router.navigate(['/admin/blogcrud']);
   }
 
   showPreview(event: any){
@@ -125,7 +140,7 @@ export class NewblogComponent implements OnInit {
         this.imgSrc = this.blog.imageURL;
       }
       else{
-        this.imgSrc = '/assets/images/Default_Uploader_Pic.png';
+        this.imgSrc = '/assets/defaults/Default_Uploader_Pic.png';
       }
     }
   }
@@ -139,11 +154,15 @@ export class NewblogComponent implements OnInit {
         this.imgSrc = this.blog.imageURL;
       }
       else{
-        this.imgSrc = '/assets/images/Default_Uploader_Pic.png';
+        this.imgSrc = '/assets/defaults/Default_Uploader_Pic.png';
       }
     }
 
     return this.imgSrc;
   }
+
+
 }
+
+
   

@@ -1,1 +1,51 @@
-<p>carouselcrud works!</p>
+<div class="container">
+    <!-- Default form contact -->
+    <form #newcarousel="ngForm" (ngSubmit)="save(newcarousel.value); onClear();" class="border border-light p-5">
+
+        <!-- isPublic -->
+        <div class="form-group">
+            <label for="isPublic">Post to Public</label>
+            <input #isPublic="ngModel" [(ngModel)]="carousel.isPublic" name="isPublic" type="checkbox" id="isPublic" class="form-control" value="isPublic">
+        </div>
+
+        <!-- Url -->
+        <div class="form-group">
+            <label for="url">Url</label>
+            <input #url="ngModel" [(ngModel)]="carousel.url" name="url" type="text" id="url" class="form-control" required>
+            <div class="alert alert-danger" role="alert" *ngIf="url.touched && url.invalid">
+                url is required!
+            </div>
+        </div>
+
+         <!--Image Url-->
+         <div class="form-group">
+            <label for="imageURL">Image Upload</label>
+            <input #imageURL="ngModel" [(ngModel)]="carousel.imageURL" id="imageURL" class="form-control" name="imageURL" type="file" (change)="showPreview($event)" accept="image/*">
+        </div>
+
+        <button *ngIf="!this.carouselUID" [disabled]="!newcarousel.valid" class="btn btn-info" (click)="create(newcarousel.value);">Submit</button>
+        <button *ngIf="!this.carouselUID" class="btn btn-info" (click)="onClear();">Clear</button>
+        <button *ngIf="this.carouselUID" [disabled]="!newcarousel.valid" class="btn btn-info" (click)="save(newcarousel.value);">Update</button>
+        <button *ngIf="this.carouselUID" [disabled]="!newcarousel.valid" class="btn btn-info" (click)="cancel();">Cancel</button>
+
+    </form>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <mat-card class="col-md-3 blog-box hoverable" *ngFor=" let carousel of carousels | async">
+          <a><div class="blog-inner-box">
+            <div>
+              <img class="w-100" src="{{carousel.imageURL}}">
+            </div>
+            <h2>{{carousel.url}}</h2>
+          </div></a>
+          <div class="blog-inner-box" bottom="0" position="fixed">
+            <a><mdb-icon (click)="edit(carousel)" fas icon="edit" size="" class=""></mdb-icon></a> 
+            &nbsp;
+            <a><mdb-icon (click)="delete(carousel)" fas icon="trash-alt" size="" class=""></mdb-icon></a>
+         </div>
+           </mat-card>
+    </div>
+  </div>

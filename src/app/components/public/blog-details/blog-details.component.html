@@ -1,5 +1,5 @@
 <div *ngIf="blog">
     <h2>{{blog.title}}</h2>
-    <div [innerHtml]='blog.content'></div>
+    <div [innerHTML]='blog.content'></div>
     <p>posted by {{blog.author}} &bull; {{blog.timeStamp.toDate() | date: 'fullDate'}}</p>
 </div>

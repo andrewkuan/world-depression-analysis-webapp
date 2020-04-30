@@ -1,3 +1,4 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { BlogserviceService } from './../../../services/blog/blogservice.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -16,10 +17,12 @@ export class BlogDetailsComponent implements OnInit {
   blog : Blog;
   Editor = ClassicEditor;
 
+
   constructor(
     private route: ActivatedRoute,
-    private blogservice: BlogserviceService
-  ) { }
+    private blogservice: BlogserviceService,
+    private sanitizer : DomSanitizer
+  ) {}
 
   ngOnInit(): void {
     this.getBlog()
@@ -31,8 +34,9 @@ export class BlogDetailsComponent implements OnInit {
     return this.blogservice.getBlog(id).subscribe( data => this.blog = data)
   }
 
-  getText(){
-    return this.blog.content.replace(/<[^>]*>/g, '');
-  }
+  sendUrl(playerUrl) {
+    // this.iframeURL = playerUrl // try it first, if it doesn't work use the sanitized URL
+    return this.sanitizer.bypassSecurityTrustResourceUrl(playerUrl);
+}
 
 }

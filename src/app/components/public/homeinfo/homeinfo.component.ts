@@ -1,4 +1,6 @@
-import { BlogComponent } from './../blog/blog.component';
+import { CarouselserviceService } from './../../../services/carousel/carouselservice.service';
+import { Carousel } from './../../../models/carousel';
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeinfoComponent implements OnInit {
 
-  constructor() { }
+  carousels: Observable<Carousel[]>
+
+  constructor(private carouselservice: CarouselserviceService) { }
 
   ngOnInit(): void {
+    this.carousels = this.carouselservice.getAllBlog()
   }
 
 }

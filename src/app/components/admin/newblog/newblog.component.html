@@ -6,6 +6,12 @@
 
                 <p class="h4 mb-4 text-center">New Blog</p>
 
+                <!-- isPublic -->
+                <div class="form-group">
+                    <label for="isPublic">Post to Public</label>
+                    <input #isPublic="ngModel" [(ngModel)]="blog.isPublic" name="isPublic" type="checkbox" id="isPublic" class="form-control" value="isPublic">
+                </div>
+
                 <!-- Title -->
                 <div class="form-group">
                     <label for="title">Title</label>
@@ -34,8 +40,16 @@
                 </div>
             
                 <!-- Content -->
-                <div class="form-group">
+                <div class="form-group" >
                     <ckeditor #content="ngModel" [(ngModel)]="blog.content" name="content" id="content" rows="10" [editor]="Editor" data="" required></ckeditor>
+                    <div class="alert alert-danger" role="alert" *ngIf="content.touched && content.invalid">  
+                        Content is required!
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="form-group" >
+                    <textarea #content="ngModel" [(ngModel)]="blog.content" name="content" id="content" rows="10" cols="60" data="" required></textarea>
                     <div class="alert alert-danger" role="alert" *ngIf="content.touched && content.invalid">  
                         Content is required!
                     </div>
@@ -50,6 +64,7 @@
                 <button *ngIf="!this.blogUID" [disabled]="!newblog.valid" class="btn btn-info" (click)="create(newblog.value);">Submit</button>
                 <button *ngIf="!this.blogUID" class="btn btn-info" (click)="onClear();">Clear</button>
                 <button *ngIf="this.blogUID" [disabled]="!newblog.valid" class="btn btn-info" (click)="save(newblog.value);">Update</button>
+                <button *ngIf="this.blogUID" [disabled]="!newblog.valid" class="btn btn-info" (click)="cancel();">Cancel</button>
 
             </form>
 
@@ -67,7 +82,7 @@
                 <mdb-card-body>
                     <!--Title-->
                     <mdb-card-title>
-                        <h4  class="card-title font-weight-bold mb-2 lead">{{blog.title}}</h4>
+                        <h2  class="card-title font-weight-bold mb-2 lead">{{blog.title}}</h2>
                     </mdb-card-title>
                 
                     <!--Text-->
@@ -78,10 +93,10 @@
                                         
                             <dt class="col-sm-4">Category</dt>
                             <dd class="col-sm-8">{{blog.category}}</dd>
-
-                            <dt class="col-sm-4">Content</dt>
-                            <dd class="col-sm-8">{{blog.content}}</dd>
                         </dl>
+
+                        <div class="" [innerHTML]='blog.content'></div>
+                        
                     </mdb-card-text>
 
                 </mdb-card-body>
