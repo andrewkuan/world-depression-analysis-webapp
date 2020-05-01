@@ -1,8 +1,8 @@
 .blog-box {
   margin: 10px;
   box-shadow: 3px 3px 5px #D3D3D3;
-  background-color: #FFF6F2;
   border-radius: 10px;
+  background-color: #FFFFFF;
 }
 
 .div-image{
@@ -12,4 +12,8 @@
 
 .blog-inner-box{
   padding:10px
+}
+
+.base{
+  padding:20px
 }

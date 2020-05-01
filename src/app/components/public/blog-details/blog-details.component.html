@@ -1,5 +1,9 @@
-<div *ngIf="blog">
+<div class="container base">
+    <img src="{{blog.imageURL}}">
     <h2>{{blog.title}}</h2>
+</div>
+
+<div class="container base">
+    <h5>{{blog.timeStamp.toDate() | date: 'fullDate'}}</h5>
     <div [innerHTML]='blog.content'></div>
-    <p>posted by {{blog.author}} &bull; {{blog.timeStamp.toDate() | date: 'fullDate'}}</p>
 </div>

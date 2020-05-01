@@ -7,8 +7,14 @@
     text-align: center;
 }
 
-.container{
+.design{
     border-style: solid;
     border-color: #8b0101;
     border-width: 5px;
+}
+
+.donatetitle{
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
 }

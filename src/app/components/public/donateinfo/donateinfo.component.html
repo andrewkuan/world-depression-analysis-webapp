@@ -1,43 +1,55 @@
+<div class="container base">
+  <br>
+<div class="text-center donatetitle">
+  <h1>Thanks for your support</h1>
+  <h2>We hope that our information is helpful. We need your help to sustain.</h2>
+  <p>
+    As of now, we don't plan to do ads on our website as it may ruin the overall experience of the users. 
+    Therefore, we hope that you, readers can kindly donate to keep this website sustained.
+    We accept 5 cryptocurrencies (Bitcoin, Ether, Tezos, Monero and Stellar) and also any ERC-20 tokens including USD-T (ERC-20) as donations.
+    Your donations will be directed towards feeding the writers, hosting of the website and future developments of the website. 
+  </p>
+</div>
 <br>
-<div class="container">
+<div class="container design">
     <br>
     <div class="row">
-        <div class="col-md-4 crypto_div">
+        <div class="col-md-4 crypto_div" (click)="framebitcoin.show()">
             <br>
             Bitcoin (BTC)
             <br>
             <img class="crypto" src="assets/crypto_address/1KNz9SvZaxdXFEHbAtSfLvSTWSbLWrj93g Bitcoin QR.png" alt="Bitcoin QR">
             <br>
         </div>
-        <div class="col-md-4 crypto_div">
+        <div class="col-md-4 crypto_div" (click)="frameether.show()">
             <br>
             Ether (ETH)
             <br>
             <img class="crypto" src="assets/crypto_address/0x96CE3c1fF8E54396C29818fe665763E42041Bc41 Ether QR.png" alt="Ether QR">
             <br>
         </div>
-        <div class="col-md-4 crypto_div">
+        <div class="col-md-4 crypto_div" (click)="frametezos.show()">
             <br>
-            Monero (XMR)
+            Tezos (XTZ)
             <br>
-            <img class="crypto" src="assets/crypto_address/42UWdihEzJn9HY1N3h6moce4VcKmHudamXrZ1AjUkwV594eQ1BGY3h1Yxz5Ljzefu9h8Rkutsk2eRa3j4QehQL6vEQQcmpD Monero QR.png" alt="Monero QR">
+            <img class="crypto" src="assets/crypto_address/tz2JiMb17Z6L7P2qy3nuZujeHh1edMmgXLGv Tezos QR.jpeg" alt="Tezos QR">
             <br>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 crypto_div">
+        <div class="col-md-4 crypto_div" (click)="framemonero.show()">
             <br>
             Monero (XMR)
             <br>
             <img class="crypto" src="assets/crypto_address/42UWdihEzJn9HY1N3h6moce4VcKmHudamXrZ1AjUkwV594eQ1BGY3h1Yxz5Ljzefu9h8Rkutsk2eRa3j4QehQL6vEQQcmpD Monero QR.png" alt="Monero QR">
         </div>
-        <div class="col-md-4 crypto_div">
+        <div class="col-md-4 crypto_div" (click)="framestellar.show()">
             <br>   
             Stellar (XLM)
             <br>
             <img class="crypto" src="assets/crypto_address/GC3KS34FC2QWVN56BV4RL6LEK3PQGAQ7EDIFJCAKNWRYPQZZWNXKYCRA Stellar QR.png" alt="Stellar QR">
         </div>
-        <div class="col-md-4 crypto_div">
+        <div class="col-md-4 crypto_div" (click)="frameerc20.show()">
             <br>
             ERC-20
             <br>
@@ -47,3 +59,148 @@
     <br>
 </div>
 <br>
+
+<!--Bitcoin-->
+<div mdbModal #framebitcoin="mdbModal" class="modal fade top" id="framebitcoin" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Body-->
+      <div class="modal-body justify-content-center">
+        <h2>Bitcoin (BTC)</h2>
+        <p style="font-size:3.5vw">1KNz9SvZaxdXFEHbAtSfLvSTWSbLWrj93g</p>
+        <img src="assets/crypto_address/1KNz9SvZaxdXFEHbAtSfLvSTWSbLWrj93g Bitcoin QR.png" width="50%" alt="ERC-20 QR">
+        <br>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="blue-grey" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="framebitcoin.hide()">Close</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<!--Ether-->
+<div mdbModal #frameether="mdbModal" class="modal fade top" id="frameether" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Body-->
+      <div class="modal-body justify-content-center">
+        <h2>Ether (ETH)</h2>
+        <p style="font-size:3vw">0x96CE3c1fF8E54396C29818fe665763E42041Bc41</p>
+        <img src="assets/crypto_address/0x96CE3c1fF8E54396C29818fe665763E42041Bc41 Ether QR.png" width="50%" alt="ERC-20 QR">
+        <br>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="blue-grey" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frameether.hide()">Close</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<!--Monero-->
+<div mdbModal #framemonero="mdbModal" class="modal fade top" id="framemonero" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Body-->
+      <div class="modal-body justify-content-center">
+        <h2>Monero (XMR)</h2>
+        <p style="font-size:1.2vw">42UWdihEzJn9HY1N3h6moce4VcKmHudamXrZ1AjUkwV594eQ1BGY3h1Yxz5Ljzefu9h8Rkutsk2eRa3j4QehQL6vEQQcmpD</p>
+        <img src="assets/crypto_address/42UWdihEzJn9HY1N3h6moce4VcKmHudamXrZ1AjUkwV594eQ1BGY3h1Yxz5Ljzefu9h8Rkutsk2eRa3j4QehQL6vEQQcmpD Monero QR.png" width="50%" alt="ERC-20 QR">
+        <br>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="blue-grey" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="framemonero.hide()">Close</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<!--Tezos-->
+<div mdbModal #frametezos="mdbModal" class="modal fade top" id="frametezos" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Body-->
+      <div class="modal-body justify-content-center">
+        <h2>Tezos</h2>
+        <p style="font-size:3.5vw">tz2JiMb17Z6L7P2qy3nuZujeHh1edMmgXLGv</p>
+        <img src="assets/crypto_address/tz2JiMb17Z6L7P2qy3nuZujeHh1edMmgXLGv Tezos QR.jpeg" width="50%" alt="ERC-20 QR">
+        <br>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="blue-grey" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frametezos.hide()">Close</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<!--Stellar-->
+<div mdbModal #framestellar="mdbModal" class="modal fade top" id="framestellar" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Body-->
+      <div class="modal-body justify-content-center">
+        <h2>Stellar (XMR)</h2>
+        <p style="font-size:2.1vw">GC3KS34FC2QWVN56BV4RL6LEK3PQGAQ7EDIFJCAKNWRYPQZZWNXKYCRA</p>
+        <img src="assets/crypto_address/GC3KS34FC2QWVN56BV4RL6LEK3PQGAQ7EDIFJCAKNWRYPQZZWNXKYCRA Stellar QR.png" width="50%" alt="ERC-20 QR">
+        <br>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="blue-grey" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="framestellar.hide()">Close</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+<!--ERC-20-->
+<div mdbModal #frameerc20="mdbModal" class="modal fade top" id="frameerc20" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+
+      <!--Body-->
+      <div class="modal-body justify-content-center">
+        <h2>ERC-20</h2>
+        <p style="font-size:3vw">0x96CE3c1fF8E54396C29818fe665763E42041Bc41</p>
+        <img src="assets/crypto_address/0x96CE3c1fF8E54396C29818fe665763E42041Bc41 Ether QR.png" width="50%" alt="ERC-20 QR">
+        <br>
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="blue-grey" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frameerc20.hide()">Close</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+</div>

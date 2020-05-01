@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container base">
+  <h1>Blog</h1>
   <div class="row">
     <ng-container *ngFor=" let blog of blogs | async">
-      <mat-card class="col-md-4 blog-box hoverable" *ngIf="blog.isPublic">
+      <mat-card class="col-sm blog-box hoverable" *ngIf="blog.isPublic">
           <a><div class="blog-inner-box" routerLink="../blog/{{blog.id}}">
             <img class="div-image" src="{{blog.imageURL}}" *ngIf="blog.imageURL">
             <h2>{{blog.title}}</h2>
