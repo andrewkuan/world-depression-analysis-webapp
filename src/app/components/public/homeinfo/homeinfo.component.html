@@ -1,7 +1,7 @@
-<div class="container base">
-    <mdb-carousel [isControls]="false" [animation]="'fade'">
+<div class="container base ">
+    <mdb-carousel [animation]="'fade'">
       <ng-container *ngFor=" let carousel of carousels | async">
-        <mdb-carousel-item>
+        <mdb-carousel-item *ngIf="carousel.isPublic">
           <a href="{{carousel.url}}">
             <img class="d-block w-100" src="{{carousel.imageURL}}">
           </a>
@@ -11,4 +11,6 @@
 </div>
 
 <app-blog></app-blog>
+
+<br>
 

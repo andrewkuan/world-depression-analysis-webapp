@@ -1,1 +1,71 @@
-<p>ebookcrud works!</p>
+<div class="container base">
+    <!-- Default form contact -->
+    <form #newebook="ngForm" (ngSubmit)="save(newebook.value); onClear();" class="border border-light p-5">
+
+        <!-- isPublic -->
+        <div class="form-group">
+            <label for="isPublic">Post to Public </label>
+            <input #isPublic="ngModel" [(ngModel)]="ebook.isPublic" name="isPublic" type="checkbox" id="isPublic" class="form-control" value="isPublic">
+        </div>
+
+        <!-- Title -->
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input #title="ngModel" [(ngModel)]="ebook.title" name="title" type="text" id="title" class="form-control" required>
+            <div class="alert alert-danger" role="alert" *ngIf="title.touched && title.invalid">
+                title is required!
+            </div>
+        </div>
+
+        <!-- Author -->
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input #author="ngModel" [(ngModel)]="ebook.author" name="author" type="text" id="author" class="form-control" required>
+            <div class="alert alert-danger" role="alert" *ngIf="author.touched && author.invalid">
+                author is required!
+            </div>
+        </div>
+
+        <!-- Url -->
+        <div class="form-group">
+            <label for="url">Url</label>
+            <input #url="ngModel" [(ngModel)]="ebook.url" name="url" type="text" id="url" class="form-control" required>
+            <div class="alert alert-danger" role="alert" *ngIf="url.touched && url.invalid">
+                url is required!
+            </div>
+        </div>
+
+         <!--Image Url-->
+         <div class="form-group">
+            <label for="imageURL">Image Upload</label>
+            <input #imageURL="ngModel" [(ngModel)]="ebook.imageURL" id="imageURL" class="form-control" name="imageURL" (change)="showPreview($event)" type="file" accept="image/*">
+        </div>
+
+        <button *ngIf="!this.ebookUID" [disabled]="!newebook.valid" class="btn btn-info" (click)="create(newebook.value);">Submit</button>
+        <button *ngIf="!this.ebookUID" class="btn btn-info" (click)="onClear();">Clear</button>
+        <button *ngIf="this.ebookUID" [disabled]="!newebook.valid" class="btn btn-info" (click)="save(newebook.value);">Update</button>
+        <button *ngIf="this.ebookUID" [disabled]="!newebook.valid" class="btn btn-info" (click)="cancel();">Cancel</button>
+
+    </form>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <mat-card class="col-sm blog-box hoverable" *ngFor=" let ebook of ebooks | async">
+          <a><div class="blog-inner-box">
+            <div>
+              <img class="w-100" src="{{ebook.imageURL}}">
+            </div>
+            <h2>{{ebook.title}}</h2>
+            <p>{{ebook.author}}</p>
+            <p>Public: {{ebook.isPublic}}</p>
+          </div></a>
+          <div class="blog-inner-box" bottom="0" position="fixed">
+            <a><mdb-icon (click)="edit(ebook)" fas icon="edit" size="" class=""></mdb-icon></a> 
+            &nbsp;
+            <a><mdb-icon (click)="delete(ebook)" fas icon="trash-alt" size="" class=""></mdb-icon></a>
+         </div>
+           </mat-card>
+    </div>
+  </div>

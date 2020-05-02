@@ -43,6 +43,8 @@ import { CommonModule } from '@angular/common';
 import { BlogDetailsComponent } from './components/public/blog-details/blog-details.component';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { EbookinfoComponent } from './components/public/ebookinfo/ebookinfo.component';
+import { ContactinfoComponent } from './components/public/contactinfo/contactinfo.component';
 
 
 @NgModule({
@@ -64,7 +66,11 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     EbookcrudComponent,
     BlogDetailsComponent,
 
-    SafePipe
+    SafePipe,
+
+    EbookinfoComponent,
+
+    ContactinfoComponent
   ],
   imports: [
     BrowserModule,

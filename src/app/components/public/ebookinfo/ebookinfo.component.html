@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Ebooks</h1>
+    <div class="row">
+      <ng-container *ngFor=" let ebook of ebooks | async">
+        <mat-card class="col-sm blog-box hoverable" *ngIf="ebook.isPublic">
+            <a href="{{ebook.url}}">
+                <div class="blog-inner-box">
+                    <img class="div-image" src="{{ebook.imageURL}}" *ngIf="ebook.imageURL">
+                    <h2>{{ebook.title}}</h2>
+                    <p>{{ebook.author}}</p>
+                </div>
+            </a>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>

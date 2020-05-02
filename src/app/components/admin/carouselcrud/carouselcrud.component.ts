@@ -18,8 +18,7 @@ import {Observable} from 'rxjs/internal/Observable';
 })
 export class CarouselcrudComponent implements OnInit {
 
-  imgSrc : string =  null
-  selectedImage : any = null
+  selectedImage : any = null;
   carouselUID : string;
   carousels :Observable<Carousel[]>;
 
@@ -38,35 +37,33 @@ export class CarouselcrudComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.carouselUID = this.route.snapshot.paramMap.get('id');
-      if(this.carouselUID){
-        this.carouselservice.getBlog(this.carouselUID).pipe(take(1)).subscribe((carousel:Carousel) => this.carousel = carousel)
-      };
 
-    this.carousels = this.carouselservice.getAllBlog()
+    this.carousels = this.carouselservice.getAllCarousel()
     }
 
   @ViewChild('newcarousel',  {static: false}) form: NgForm;
 
   save(carousel: Carousel){
 
-  const fileRef = this.storage.ref('carousel_images/'+ this.carouselUID);
+    const fileRef = this.storage.ref('carousel_images/'+ this.carouselUID);
 
-  if(this.selectedImage!=null){
-    this.storage.upload('carousel_images/'+ this.carouselUID, this.selectedImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe((url) => {
-          carousel.imageURL = url;
-          this.carouselservice.updateBlog(carousel, this.carouselUID);
+    if(this.selectedImage!=null){
+      this.storage.upload('carousel_images/'+ this.carouselUID, this.selectedImage).snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) => {
+            carousel.imageURL = url;
+            this.carouselservice.updateCarousel(carousel, this.carouselUID);
+          })
         })
-      })
-      ).subscribe();
-  }else{
-    this.carouselservice.updateBlog(carousel, this.carouselUID);
-  }
+        ).subscribe();
+    }else{
+      this.carouselservice.updateCarousel(carousel, this.carouselUID);
+    }
 
-  // this.clearField(); 
-  this.router.navigate(['/admin/carouselcrud']);
+    this.selectedImage=null;
+
+    // this.clearField(); 
+    this.router.navigate(['/admin/carouselcrud']);
   }
 
   create(carousel: Carousel){
@@ -79,23 +76,25 @@ export class CarouselcrudComponent implements OnInit {
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
             carousel.imageURL = url;
-            this.carouselservice.createBlog({
+            this.carouselservice.createCarousel({
               uid : newdoc.id,
               imageURL : carousel.imageURL,
               url : carousel.url,
-              isPublic : false
+              isPublic : carousel.isPublic,
             },newdoc.id);
           })
         })
         ).subscribe();
     }else{
-      this.carouselservice.createBlog({
+      this.carouselservice.createCarousel({
         uid : newdoc.id,
         imageURL : carousel.imageURL,
         url : carousel.url,
-        isPublic : false
+        isPublic : carousel.isPublic,
       },newdoc.id);
     }
+
+    this.selectedImage=null;
 
     // this.clearField(); 
     this.router.navigate(['/admin/carouselcrud']);
@@ -103,10 +102,16 @@ export class CarouselcrudComponent implements OnInit {
 
   delete(carousel:Carousel){
     if(confirm("Are you sure that you want to delete this?"))
-      this.carouselservice.deleteBlog(carousel);
+      this.carouselservice.deleteCarousel(carousel);
   }
 
   edit(carousel:Carousel){
+    this.carouselUID = carousel.uid
+
+    if(this.carouselUID){
+      this.carouselservice.getCarousel(this.carouselUID).pipe(take(1)).subscribe((carousel:Carousel) => this.carousel = carousel)
+    };
+
 
   }
 
@@ -121,36 +126,10 @@ export class CarouselcrudComponent implements OnInit {
 
   showPreview(event: any){
     if(event.target.files && event.target.files[0]){
-      const reader = new FileReader();
-      reader.onload = (e:any) => this.imgSrc = e.target.result;
-      reader.readAsDataURL(event.target.files[0]);
       this.selectedImage = event.target.files[0];
     }
     else{
-
-      if(this.carousel.imageURL){
-        this.imgSrc = this.carousel.imageURL;
-      }
-      else{
-        this.imgSrc = '/assets/defaults/Default_Uploader_Pic.png';
-      }
     }
-  }
-
-  DefaultPreview(){
-    if(this.selectedImage){
-
-    }
-    else{
-      if(this.carousel.imageURL){
-        this.imgSrc = this.carousel.imageURL;
-      }
-      else{
-        this.imgSrc = '/assets/defaults/Default_Uploader_Pic.png';
-      }
-    }
-
-    return this.imgSrc;
   }
 
 }

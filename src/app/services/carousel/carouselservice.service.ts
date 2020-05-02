@@ -20,7 +20,7 @@ export class CarouselserviceService {
 
   }
 
-  getAllBlog(){
+  getAllCarousel(){
     return this.carouselCollection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Carousel
@@ -30,22 +30,22 @@ export class CarouselserviceService {
     }));
   }
 
-  getBlog(carouselUID:string){
+  getCarousel(carouselUID:string){
     this.carouselDocument = this.afs.doc('/carousel/' + carouselUID)
     return this.carouselDocument.valueChanges()
   }
 
-  createBlog(carousel:Carousel, carouselUID:string){
+  createCarousel(carousel:Carousel, carouselUID:string){
     this.afs.collection("carousel").doc(carouselUID).set(carousel)
   }
 
-  deleteBlog(carousel:Carousel){
+  deleteCarousel(carousel:Carousel){
     this.afs.doc('/carousel/'+ carousel.uid).delete()
 
     this.storage.storage.refFromURL(carousel.imageURL).delete();
   }
 
-  updateBlog(carousel:Carousel, carouselUID:string){
+  updateCarousel(carousel:Carousel, carouselUID:string){
     return this.afs.collection("carousel").doc(carouselUID).update(carousel);
   }
 }

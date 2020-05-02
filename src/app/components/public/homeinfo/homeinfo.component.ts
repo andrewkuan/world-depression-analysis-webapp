@@ -15,7 +15,7 @@ export class HomeinfoComponent implements OnInit {
   constructor(private carouselservice: CarouselserviceService) { }
 
   ngOnInit(): void {
-    this.carousels = this.carouselservice.getAllBlog()
+    this.carousels = this.carouselservice.getAllCarousel()
   }
 
 }

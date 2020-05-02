@@ -1,3 +1,5 @@
+import { ContactinfoComponent } from './components/public/contactinfo/contactinfo.component';
+import { EbookinfoComponent } from './components/public/ebookinfo/ebookinfo.component';
 import { BlogDetailsComponent } from './components/public/blog-details/blog-details.component';
 import { InnerPageGuardService } from './services/auth/inner-page-guard.service';
 import { NgModule } from '@angular/core';
@@ -27,8 +29,10 @@ const routes: Routes = [
   { path: 'home', component : HomeinfoComponent},
   { path: 'blog', component : BlogComponent},
   { path: 'blog/:id', component : BlogDetailsComponent},
+  { path: 'ebook', component : EbookinfoComponent},
   { path: 'about', component : AboutinfoComponent},
   { path: 'donate', component : DonateinfoComponent},
+  { path: 'contact', component : ContactinfoComponent},
   { path: 'unauth', component : UnauthComponent},
   
   { path: 'adminlogin', component : AdminloginComponent, canActivate: [InnerPageGuardService]},

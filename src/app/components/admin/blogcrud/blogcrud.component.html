@@ -1,4 +1,4 @@
-<div class="base container">
+<div class="container">
   <div class="newJob">
     <button routerLink="/admin/blogcrud/new" mdbBtn type="button" class="lighten red darken-4" text-color="white" mdbWavesEffect>New Job</button>
 
@@ -9,7 +9,7 @@
 </div>
 </div>
 
-<div class="base container">
+<div class="container">
   <div class="row">
       <mat-card class="col-sm blog-box hoverable" *ngFor=" let blog of blogs | async">
         <a><div class="blog-inner-box" routerLink="../../blog/{{blog.id}}">

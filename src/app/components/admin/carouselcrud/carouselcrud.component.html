@@ -20,7 +20,7 @@
          <!--Image Url-->
          <div class="form-group">
             <label for="imageURL">Image Upload</label>
-            <input #imageURL="ngModel" [(ngModel)]="carousel.imageURL" id="imageURL" class="form-control" name="imageURL" type="file" (change)="showPreview($event)" accept="image/*">
+            <input #imageURL="ngModel" [(ngModel)]="carousel.imageURL" id="imageURL" class="form-control" name="imageURL" (change)="showPreview($event)" type="file" accept="image/*">
         </div>
 
         <button *ngIf="!this.carouselUID" [disabled]="!newcarousel.valid" class="btn btn-info" (click)="create(newcarousel.value);">Submit</button>
@@ -32,14 +32,15 @@
 
 </div>
 
-<div class="container base">
+<div class="container">
     <div class="row">
-        <mat-card class="col-md-3 blog-box hoverable" *ngFor=" let carousel of carousels | async">
+        <mat-card class="col-sm blog-box hoverable" *ngFor=" let carousel of carousels | async">
           <a><div class="blog-inner-box">
             <div>
               <img class="w-100" src="{{carousel.imageURL}}">
             </div>
             <h2>{{carousel.url}}</h2>
+            <p>Public: {{carousel.isPublic}}</p>
           </div></a>
           <div class="blog-inner-box" bottom="0" position="fixed">
             <a><mdb-icon (click)="edit(carousel)" fas icon="edit" size="" class=""></mdb-icon></a> 

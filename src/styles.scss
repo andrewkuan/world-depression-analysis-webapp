@@ -58,14 +58,14 @@ $world-depression-analysis-webapp-theme: mat-light-theme($world-depression-analy
 
 html, body { height: 100%; }
 
-body, app-root { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; display: table; width: 100%; height: 100%;}
+body, app-root { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; display: table; width: 100%; height: 100%;background-color: #FFF5F1;}
 
 app-navbar, app-footer{ display: table-row; height: 1px; height: auto;}
 
 .base{
     margin-top: 30px;
     margin-bottom: 30px;
-    background-color: #FFF5F1;
+    background-color: #FFFFFF;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
