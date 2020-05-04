@@ -45,6 +45,7 @@ import { BlogDetailsComponent } from './components/public/blog-details/blog-deta
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { EbookinfoComponent } from './components/public/ebookinfo/ebookinfo.component';
 import { ContactinfoComponent } from './components/public/contactinfo/contactinfo.component';
+import { DisclaimerinfoComponent } from './components/public/disclaimerinfo/disclaimerinfo.component';
 
 
 @NgModule({
@@ -70,7 +71,9 @@ import { ContactinfoComponent } from './components/public/contactinfo/contactinf
 
     EbookinfoComponent,
 
-    ContactinfoComponent
+    ContactinfoComponent,
+
+    DisclaimerinfoComponent
   ],
   imports: [
     BrowserModule,

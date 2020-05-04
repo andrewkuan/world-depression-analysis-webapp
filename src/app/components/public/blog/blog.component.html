@@ -1,13 +1,27 @@
 <div class="container">
+  <br>
+  <br>
   <h1>Blog</h1>
   <div class="row">
     <ng-container *ngFor=" let blog of blogs | async">
-      <mat-card class="col-sm blog-box hoverable" *ngIf="blog.isPublic">
-          <a><div class="blog-inner-box" routerLink="../blog/{{blog.id}}">
-            <img class="div-image" src="{{blog.imageURL}}" *ngIf="blog.imageURL">
-            <h2>{{blog.title}}</h2>
-            <p>{{blog.author}}</p>
-          </div></a>
+      <mat-card class="col-sm-4" *ngIf="blog.isPublic">
+          <div class="blog-box hoverable">
+            <div class="row" routerLink="../../blog/{{blog.id}}"> 
+              <div class="col">
+                <a>
+                  <img class="div-image" src="{{blog.imageURL}}" *ngIf="blog.imageURL">
+                </a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="blog-inner-box"> 
+                  <h2>{{blog.title}}</h2>
+                  <p>{{blog.author}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
       </mat-card>
     </ng-container>
   </div>

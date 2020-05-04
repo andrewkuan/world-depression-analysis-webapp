@@ -1,1 +1,26 @@
-<p>contactinfo works!</p>
+<div class="container">
+    <!-- Default form contact -->
+    <form #newcontact="ngForm" class="text-center border border-light p-5" (ngSubmit)="onSubmit(newcontact.value)">
+
+        <p class="h4 mb-4">Contact us</p>
+
+        <!-- Name -->
+        <input #name="ngModel" [(ngModel)]="contact.name" type="text" id="name" name="name" class="form-control mb-4" placeholder="Name" required>
+
+        <!-- Email -->
+        <input #email="ngModel" [(ngModel)]="contact.email" type="email" id="email" name="email" class="form-control mb-4" placeholder="E-mail" required>
+
+        <!-- Aubjwxt -->
+        <input #subject="ngModel" [(ngModel)]="contact.subject" type="text" id="subject" name="subject" class="form-control mb-4" placeholder="Subject" required>
+
+        <!-- Message -->
+        <div class="form-group">
+            <textarea #message="ngModel" [(ngModel)]="contact.message" class="form-control rounded-0" id="message" name="message" rows="8" placeholder="Message" required></textarea >
+        </div>
+
+        <!-- Send button -->
+        <button class="btn btn-info btn-block" type="submit">Send</button>
+
+    </form>
+    <!-- Default form contact -->
+</div>

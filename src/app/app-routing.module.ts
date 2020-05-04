@@ -1,3 +1,4 @@
+import { DisclaimerinfoComponent } from './components/public/disclaimerinfo/disclaimerinfo.component';
 import { ContactinfoComponent } from './components/public/contactinfo/contactinfo.component';
 import { EbookinfoComponent } from './components/public/ebookinfo/ebookinfo.component';
 import { BlogDetailsComponent } from './components/public/blog-details/blog-details.component';
@@ -27,10 +28,11 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
 
   { path: 'home', component : HomeinfoComponent},
+  { path: 'about', component : AboutinfoComponent},
   { path: 'blog', component : BlogComponent},
   { path: 'blog/:id', component : BlogDetailsComponent},
   { path: 'ebook', component : EbookinfoComponent},
-  { path: 'about', component : AboutinfoComponent},
+  { path: 'disclaimer', component : DisclaimerinfoComponent},
   { path: 'donate', component : DonateinfoComponent},
   { path: 'contact', component : ContactinfoComponent},
   { path: 'unauth', component : UnauthComponent},

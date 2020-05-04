@@ -16,35 +16,58 @@
             <a class="nav-link waves-light" routerLink="/home" mdbWavesEffect>Home</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link waves-light" routerLink="/about" mdbWavesEffect>About</a>
+          </li>
+          <li class="nav-item">
               <a class="nav-link waves-light" routerLink="/blog" mdbWavesEffect>Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link waves-light" routerLink="/ebook" mdbWavesEffect>E-Book</a>
-        </li>
+          </li>
           <li class="nav-item">
-              <a class="nav-link waves-light" routerLink="/about" mdbWavesEffect>About</a>
+            <a class="nav-link waves-light" routerLink="/disclaimer" mdbWavesEffect>Disclaimer</a>
           </li>
           <li class="nav-item">
               <a class="nav-link waves-light" routerLink="/donate" mdbWavesEffect>Donate</a>
           </li>
           <li class="nav-item">
             <a class="nav-link waves-light" routerLink="/contact" mdbWavesEffect>Contact</a>
-        </li>
+          </li>
       </ul>
     </ng-template>
 
     <ul class="navbar-nav ml-auto text-light" *ngIf="auth.isLoggedIn ; else anonymousUser">
+      <!-- Dropdown -->
       <li class="nav-item">
         <a class="nav-link waves-light" routerLink="/admin/dashboard" mdbWavesEffect>Dashboard</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" routerLink="/admin/blogcrud" mdbWavesEffect>Blog</a>
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+        CRUD<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" routerLink="/admin/blogcrud" mdbWavesEffect>Blog</a>
+            <a class="dropdown-item waves-light" routerLink="/admin/carouselcrud" mdbWavesEffect>Carousel</a>
+            <a class="dropdown-item waves-light" routerLink="/admin/ebookcrud" mdbWavesEffect>E-Book</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" routerLink="/admin/carouselcrud" mdbWavesEffect>Carousel</a>
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+        Public<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" routerLink="/home" mdbWavesEffect>Home</a>
+          <a class="dropdown-item waves-light" routerLink="/blog" mdbWavesEffect>Blog</a>
+          <a class="dropdown-item waves-light" routerLink="/ebook" mdbWavesEffect>E-Book</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link waves-light" routerLink="/admin/ebookcrud" mdbWavesEffect>E-Book</a>
+      <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+        Info<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" routerLink="/about" mdbWavesEffect>About</a>
+          <a class="dropdown-item waves-light" routerLink="/disclaimer" mdbWavesEffect>Disclaimer</a>
+          <a class="dropdown-item waves-light" routerLink="/donate" mdbWavesEffect>Donate</a>
+          <a class="dropdown-item waves-light" routerLink="/contact" mdbWavesEffect>Contact</a>
+        </div>
       </li>
       <li class="nav-item">
           <a class="nav-link waves-light" (click)= "logout()" mdbWavesEffect>Logout</a>
