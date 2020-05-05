@@ -1,0 +1,30 @@
+.blog-base{
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.title{
+    font-weight: bold;
+    font-size: 2.5em;
+    line-height: 1.5;
+}
+
+.view{
+    margin-top: 15px;
+    box-shadow: 4px 4px 5px grey;
+}
+
+.image-text{
+    color:white;
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+.div-image{
+    width:100%;
+  }
+
+.content{
+    padding:15px;
+}

@@ -18,3 +18,22 @@
   .base{
     padding:20px
   }
+
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+a:hover {
+  color: #525252;
+}
+
+/* selected link */
+a:active {
+  color: black;
+}

@@ -1,9 +1,18 @@
 <div class="container base">
-    <img src="{{blog.imageURL}}">
-    <h2>{{blog.title}}</h2>
-</div>
-
-<div class="container base">
-    <h5>{{blog.timeStamp.toDate() | date: 'fullDate'}}</h5>
-    <div [innerHTML]='blog.content'></div>
+    <div class="row">
+        <div class="col">
+            <div class="view">
+                <img class="div-image img-fluid" src="{{blog.imageURL}}" width="500px">
+                <div class="mask flex-center rgba-black-light">
+                    <div class="container image-text">
+                        <h1 class="title white-text">{{blog.title}}</h1>
+                        <h4 class="white-text">{{blog.author}} &bull; {{blog.timeStamp.toDate() | date: 'fullDate'}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container content" [innerHTML]='blog.content'></div>
+    <br>
 </div>  

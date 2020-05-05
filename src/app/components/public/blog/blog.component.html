@@ -4,24 +4,24 @@
   <h1>Blog</h1>
   <div class="row">
     <ng-container *ngFor=" let blog of blogs | async">
-      <mat-card class="col-sm-4" *ngIf="blog.isPublic">
+      <mat-card class="col-md-4" *ngIf="blog.isPublic">
+        <a routerLink="./{{blog.id}}">
           <div class="blog-box hoverable">
-            <div class="row" routerLink="../../blog/{{blog.id}}"> 
+            <div class="row"> 
               <div class="col">
-                <a>
-                  <img class="div-image" src="{{blog.imageURL}}" *ngIf="blog.imageURL">
-                </a>
+                <img class="div-image" src="{{blog.imageURL}}" *ngIf="blog.imageURL">
               </div>
             </div>
             <div class="row">
               <div class="col">
                 <div class="blog-inner-box"> 
                   <h2>{{blog.title}}</h2>
-                  <p>{{blog.author}}</p>
+                  <p>{{blog.author}} &bull; {{blog.timeStamp.toDate() | date: 'fullDate'}}</p>
                 </div>
               </div>
             </div>
           </div>
+        </a>
       </mat-card>
     </ng-container>
   </div>

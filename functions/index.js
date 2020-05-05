@@ -39,7 +39,7 @@ exports.sendContactMessage = functions.database.ref('/messages/{pushKey}').onWri
     
     const mailOptions = {
       to: 'depress2020s@gmail.com',
-      subject: `Contact Request from ${val.name}`,
+      subject: `${val.subject} from ${val.name}`,
       html: val.html
     };
     return mailTransport.sendMail(mailOptions).then(() => {
