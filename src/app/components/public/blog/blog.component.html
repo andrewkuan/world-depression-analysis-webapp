@@ -5,7 +5,7 @@
   <div class="row">
     <ng-container *ngFor=" let blog of blogs | async">
       <mat-card class="col-md-4" *ngIf="blog.isPublic">
-        <a routerLink="./{{blog.id}}">
+        <a routerLink="../blog/{{blog.id}}">
           <div class="blog-box hoverable">
             <div class="row"> 
               <div class="col">

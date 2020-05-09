@@ -1,16 +1,18 @@
-<!-- Default form login -->
-<form class="text-center border border-light p-5">
+<div class="container base">
+  <!-- Default form login -->
+  <form class="text-center border border-light p-5">
 
-    <p class="h4 mb-4">Sign in</p>
-  
-    <!-- Email -->
-    <input type="email" id="userName" class="form-control mb-4" placeholder="E-mail" #userName required>
-  
-    <!-- Password -->
-    <input type="password" id="userPassword" class="form-control mb-4" placeholder="Password" #userPassword required>
-  
-    <!-- Sign in button -->
-    <button mdbBtn color="info" block="true" class="my-4 red darken-4" value="Log in" (click)="login(userName.value, userPassword.value)">Sign in</button>
-  
+  <p class="h4 mb-4">Sign in</p>
+
+  <!-- Email -->
+  <input type="email" id="userName" class="form-control mb-4" placeholder="E-mail" #userName required>
+
+  <!-- Password -->
+  <input type="password" id="userPassword" class="form-control mb-4" placeholder="Password" #userPassword required>
+
+  <!-- Sign in button -->
+  <button mdbBtn color="info" block="true" class="my-4 red darken-4" value="Log in" (click)="login(userName.value, userPassword.value)">Sign in</button>
+
   </form>
   <!-- Default form login -->
+</div>

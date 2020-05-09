@@ -6,13 +6,13 @@
                 <div class="mask flex-center rgba-black-light">
                     <div class="container image-text">
                         <h1 class="title white-text">{{blog.title}}</h1>
-                        <h4 class="white-text">{{blog.author}} &bull; {{blog.timeStamp.toDate() | date: 'fullDate'}}</h4>
+                        <h4 class="subtitle white-text">{{blog.author}} &bull; {{blog.timeStamp.toDate() | date: 'fullDate'}}</h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <br>
-    <div class="container content" [innerHTML]='blog.content'></div>
+    <div class="container content div-image" [innerHTML]='blog.content'></div>
     <br>
 </div>  

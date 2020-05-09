@@ -4,9 +4,13 @@
 }
 
 .title{
+    font-size: 130%;
     font-weight: bold;
-    font-size: 2.5em;
     line-height: 1.5;
+}
+
+.subtitle{
+    font-size: 100%;
 }
 
 .view{
@@ -14,11 +18,19 @@
     box-shadow: 4px 4px 5px grey;
 }
 
+.img-content{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
 .image-text{
+    padding:5px;
     color:white;
     position: absolute;
-    bottom: 8px;
-    left: 16px;
+    bottom: 4px;
+    left: 8px;
 }
 
 .div-image{
@@ -27,4 +39,7 @@
 
 .content{
     padding:15px;
+    font-size: 16px;
+    line-height:1.75;
+    font-weight: 400;
 }
